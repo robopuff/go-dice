@@ -1,4 +1,4 @@
-# golang-dice
+# go-dice
 
 An implementation of [Dice Coefficient](http://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient) algorithm in Go.
 Code is based on [aceakash/string-similarity](https://github.com/aceakash/string-similarity)
