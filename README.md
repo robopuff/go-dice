@@ -9,6 +9,10 @@ Code is based on [aceakash/string-similarity](https://github.com/aceakash/string
 $ go get github.com/robopuff/go-dice
 ```
 
+## Documentation
+
+https://godoc.org/github.com/robopuff/go-dice
+
 ## Usage examples
 
 ```go
