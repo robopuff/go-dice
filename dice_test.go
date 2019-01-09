@@ -38,38 +38,21 @@ func TestComparePairs(t *testing.T) {
 }
 
 func TestFindBest(t *testing.T) {
-	result := FindBest("healed", []string{"mailed", "edward", "sealed", "theatre"})
+	haystack := []string{"mailed", "edward", "sealed", "theatre"}
+	bestIndex, scores := FindBest("healed", haystack)
 
-	if result.Source != "healed" {
-		t.Errorf("Result source is incorrect, expected `healed` got `%s` ", result.Source)
+	if bestIndex != 2 {
+		t.Errorf("Wrong best match index, expected `2` got `%d`", bestIndex)
 	}
 
-	if result.BestMatchIndex != 2 {
-		t.Errorf("Wrong best match index, expected `2` got `%d`", result.BestMatchIndex)
+	if haystack[bestIndex] != "sealed" {
+		t.Errorf("Wrong best match target, expected `sealed` got `%s`", haystack[bestIndex])
 	}
 
-	if result.BestMatch.Target != "sealed" {
-		t.Errorf("Wrong best match target, expected `sealed` got `%s`", result.BestMatch.Target)
-	}
-
-	if result.BestMatch != result.Ratings[result.BestMatchIndex] {
-		t.Error("Results best match is not the same as results ratings item at specified index")
-	}
-
-	tables := make(map[string]float32, 4)
-	tables["mailed"] = 0.4
-	tables["edward"] = 0.2
-	tables["sealed"] = 0.8
-	tables["theatre"] = 0.36363636363636365
-
-	for _, rating := range result.Ratings {
-		score, ok := tables[rating.Target]
-		if !ok {
-			t.Errorf("Unknown rating result occured (`%s`, `%f`)", rating.Target, rating.Rating)
-		}
-
-		if score != rating.Rating {
-			t.Errorf("Invalid comparision result (expected `%f` got `%f` when processing `%s`)", score, rating.Rating, rating.Target)
+	expectedScores := []float32{0.4, 0.2, 0.8, 0.3636363636}
+	for index, score := range expectedScores {
+		if scores[index] != score {
+			t.Errorf("Expected `%f` got `%f` when processing `%s`", score, scores[index], haystack[index])
 		}
 	}
 }

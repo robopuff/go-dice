@@ -1,6 +1,6 @@
 # go-dice
 
-An implementation of [Dice Coefficient](http://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient) algorithm in Go.
+An implementation of [Dice coefficient](http://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient) algorithm in Go.
 Code is based on [aceakash/string-similarity](https://github.com/aceakash/string-similarity)
 
 ## Installation
@@ -16,13 +16,14 @@ https://godoc.org/github.com/robopuff/go-dice
 ## Usage examples
 
 ```go
-result := dice.ComparePair("iphone", "iphone x")
-// result will be equal to 0.9090909090909091
+similarity := dice.ComparePair("healed", "sealed")
+// `similarity` will be equal to 0.8
 ```
 
 ```go
-result := dice.FindBest("healed", []string{"mailed", "edward", "sealed", "theatre"})
-// result will be an instance of dice.FindBestResults with "sealed" string scored highest (0.8)
+bestIndex, results := dice.FindBest("healed", []string{"mailed", "edward", "sealed", "theatre"})
+// Since highest score will have "sealed" `bestIndex` will be equal to `2`
+// and results will provide an array of ordered float32 similarity scores
 ```
 
 ## License
