@@ -1,3 +1,5 @@
+[![GoDoc](https://godoc.org/github.com/robopuff/go-dice?status.svg)](https://godoc.org/github.com/robopuff/go-dice)
+
 # go-dice
 
 An implementation of [Dice coefficient](http://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient) algorithm in Go.
